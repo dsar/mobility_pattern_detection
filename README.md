@@ -26,4 +26,9 @@ We will use Spark for exploratory data analysis. We will perform data filtering 
 
 
 ## Timeplan
-...
+A rough timeplan of our project is as follows:
+
+- Phase 1: Exploratory data analysis, data cleaning and data wraggling until mid of November (depending also on when we will get access to the cluster).
+- Phase 2: Detection of mobility patterns. We aim at presenting some of our findings in mid December.
+- Phase 3: Further improvement on mobility pattern detection. In case the results are satisfying, we will start working on the event detection. This phase will be terminated in the mid of January
+- Phase 4: Starting from mid January, we will be working on the final report in order to present numerically and visually our findings. The project symposium will take place at the end of January.
