@@ -1,14 +1,18 @@
 # Mobility patterns/events in Switzerland with Twitter
 
-## Abstract
+This README file includes information about the project assignment, as well as the project implementation.
 
-We are given a dataset containing tweets in Switzerland starting from 2012. The first goal of the project is to analyse the data and reconstruct mobility flows of the users. More concretely, we will try to get insights into high-frequency migration patterns in the swiss territory. This could be achieved by focusing on "frontaliers" who commute daily from France and Germany to Geneva and Zurich respectively. In addition, we will try to detect changes in migration patterns when special events take place (e.g., a new Alpine tunnel gets opened). The second task of the project is to detect events. Here, we will focus on dates and locations of such events, as well as positive or negative sentiment.
+## Project Assignment
 
-## Data Description
+### Abstract
 
-The dataset consists of 80GB of tweets in Switzerland, which are collected using the Twitter API starting from 2012. The tweets have been downloaded in json format and processed such that only a subset of the attributes is kept. Thus, we have information about the user id, the date and time of the tweet and the tweet (We would know if we have more attributes for our data once we get access to the dataset) . Moreover, all tweets have geo-location data, which is crucial for our analysis. Finally, the dataset is stored in the HDFS of the IC cluster.
+We are given a dataset containing tweets in Switzerland starting from 2010. The first goal of the project is to analyse the data and reconstruct mobility flows of the users. More concretely, we will try to get insights into high-frequency migration patterns in the Swiss territory. This could be achieved by focusing on "frontaliers" who commute daily from France and Germany to Geneva and Zurich respectively. In addition, we will try to detect changes in migration patterns when special events take place (e.g., a new Alpine tunnel gets opened). The second task of the project is to detect events. Here, we will focus on dates and locations of such events, as well as positive or negative sentiment.
 
-## Feasibility and Risks
+### Data Description
+
+The dataset consists of 5GB of tweets in Switzerland, which are collected using the Twitter API starting from 2010. The tweets have been downloaded in json format and processed such that only a subset of the attributes is kept. Thus, we have information about the user id, the date and time of the tweet, the tweet text, etc. Moreover, all tweets have geo-location data, which is crucial for our analysis. Finally, the dataset is stored in the HDFS of the IC cluster.
+
+### Feasibility and Risks
 
 The feasibility of the project depends strongly on the dataset. The reconstruction of mobility flows of users requires their location at different times during each day. In our case, tweets are the only source of geo-located information. In order for our project to be feasible, users should tweet uniformly during the day in order for their mobility patterns to be revealed. For example, people who work in Zurich but live in Germany should tweet both during the day and during the evening, so that we can have information about their working and living place respectively.
 
@@ -16,19 +20,38 @@ With respect to the second task, we need to set certain thresholds and make cert
 
 The feasibility and risks of our project could be further assessed once the dataset is provided.
 
-## Deliverables
+### Deliverables
 
-We will use Spark for exploratory data analysis. We will perform data filtering and aggregations according to the needs of each task. As soon as we have aggregated results, we will use Python for data analysis and visualization. The deliverables of our project are going to be:
+We will use Spark in order to handle properly the given dataset. We will perform data filtering and aggregations according to the needs of each task. As soon as we have aggregated results, we will use Python for data analysis and visualization. The deliverables of our project are going to be:
 
-- A well documented and commented Spark application for data filtering and aggregation written in Scala.
+- A well documented and commented Spark application for data filtering and aggregation written in Python.
 - A Python notebook with data analysis and visualization of our results. 
 - Our assumptions and data analysis pipeline would be well documented in the Python notebook.
 
-
-## Timeplan
+### Timeplan
 A rough timeplan of our project is as follows:
 
-- Phase 1: Exploratory data analysis, data cleaning and data wraggling until mid of November (depending also on when we will get access to the cluster).
-- Phase 2: Detection of mobility patterns. We aim at presenting some of our findings in mid December.
-- Phase 3: Further improvement on mobility pattern detection. In case the results are satisfying, we will start working on the event detection. This phase will be terminated in the mid of January
-- Phase 4: Starting from mid January, we will be working on the final report in order to present numerically and visually our findings. The project symposium will take place at the end of January.
+- Phase 1: Exploratory data analysis, data cleaning and data wrangling.
+- Phase 2: Detection of mobility patterns.
+- Phase 3: We work on the event detection.
+- Phase 4: We partner with a team that focused on the visualization part (to be done).
+- Phase 5: We work on the sentiment analysis of the tweets (to be done).
+
+## Project Implementation
+
+The provided dataset contains tweets starting from 2010 till 2016. We choose to make a yearly based analysis on all our data analysis tasks. We focus on the machine learning side of the project and provide a simple but insightful visualization of our results. Also, we try to partner with a team that focuses on the visualization part of the project that is responsible for producing more complex plots.
+
+### Mobility Patterns
+
+The [mobility_patterns](code/local/mobility_patterns.ipynb) notebook contains our work on detecting mobility patterns in Switzerland. It contains both the code and the assumptions we made in order to produce our results. These assumptions have to do mainly with:
+* which users to keep in order to produce our results
+* how we determined if a user is at work or not
+* how we determined the user's location of residence and work
+For more information and a detailed analysis of how we approach the problem of mobility patterns, please refer to the [mobility_patterns](code/local/mobility_patterns.ipynb) notebook
+
+### Event Detection
+The [event_detection](code/local/event_detection.ipynb) notebook contains our work on detecting events in Switzerland based on geolocated information. It contains both the code and the assumptions we made in order to produce our results. These assumptions have to do mainly with:
+* minimum number of tweets to declare the presence of an event
+* distance between tweets referring to the same event (tweets for the same event should be posted from the same area, i.e. in a small distance)
+* metrics we introduce in order to better detect events (e.g. an event should have tweets from numerous users)
+For more information and a detailed analysis of how we approach the problem of event detection, please refer to the [mobility_patterns](code/local/event_detection.ipynb) notebook.
