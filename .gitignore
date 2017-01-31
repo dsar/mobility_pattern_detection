@@ -6,10 +6,6 @@ code/local/googleAPI
 code/local/key.txt
 code/local/parser.py
 
-# Remove unnecessary code files (to be added later)
-code/local/utils_event_detection.py
-code/local/utils_mobility.py
-
 # Remove unnecessary data files
 data/tweets_*
 data/processed_tweets*
