@@ -9,3 +9,6 @@ code/local/parser.py
 # Remove unnecessary data files
 data/tweets_*
 data/processed_tweets*
+
+code/local/language_detector.py
+code/local/libraries.py
